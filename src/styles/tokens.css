@@ -1,0 +1,65 @@
+/* Tokens de diseño DinoAlert */
+:root {
+  --bg-0: #171124;
+  --bg-1: #1d152d;
+  --bg-2: #261c3a;
+  --bg-3: #302044;
+  --line: rgba(247, 245, 250, 0.09);
+  --line-strong: rgba(247, 245, 250, 0.18);
+  --text: #f7f5fa;
+  --text-2: #bdb3cf;
+  --text-3: #8f84a6;
+
+  --pink: #ff3d96;
+  --pink-light: #ff80bc;
+  --pink-text: #ff80bc;
+  --orange: #ff8a3d;
+  --yellow: #ffd166;
+  --lilac: #a99ad1;
+  --white: #f7f5fa;
+
+  --st-normal: #a99ad1;
+  --st-suspicious: #ff3d96;
+  --st-risk: #ff8a3d;
+  --st-nodata: #8a8299;
+
+  --font-display: 'Unbounded', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --r-stage: 22px;
+  --r-card: 14px;
+  --r-ctrl: 10px;
+
+  --sidebar-w: 228px;
+  --topbar-h: 64px;
+  --aside-w: 352px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 180ms;
+  --shadow-panel: 0 24px 60px rgba(8, 4, 16, 0.5);
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg-0: #f4f1f8;
+  --bg-1: #ffffff;
+  --bg-2: #f1ecf7;
+  --bg-3: #e6ddf1;
+  --line: rgba(32, 20, 52, 0.1);
+  --line-strong: rgba(32, 20, 52, 0.2);
+  --text: #1c1430;
+  --text-2: #4d4163;
+  --text-3: #6f6386;
+  --pink-text: #c4136a;
+  --lilac: #6b58a6;
+  --st-normal: #6b58a6;
+  --st-suspicious: #d41f78;
+  --st-risk: #c75a12;
+  --st-nodata: #6f6880;
+  --shadow-panel: 0 24px 60px rgba(40, 20, 70, 0.18);
+  color-scheme: light;
+}
+
+[data-motion='reduced'] {
+  --dur: 0ms;
+}
