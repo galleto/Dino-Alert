@@ -1,4 +1,39 @@
-GEMINI_API_KEY=tu_clave_de_gemini_aqui
-ELEVENLABS_API_KEY=tu_clave_de_elevenlabs_aqui
-BACKBOARD_API_KEY=tu_clave_de_backboard_aqui
+GEMINI_API_KEY=your_gemini_api_key_here
+ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
+BACKBOARD_API_KEY=your_backboard_api_key_here
+SOLANA_RPC_URL=https:/URL
+
+#TIGER DATA
+# This file contains environmental variables for use with your Tiger Cloud instance
+TIMESCALE_SERVICE_URL=postgres://tsdbadmin:ixjewl5c1os4e1c5@ylyek10034.y6ziah8joj.tsdb.cloud.timescale.com:39632/tsdb?sslmode=require
+# The above service url can be used to connect to your Tiger Cloud instance.
+# For example, in Python, you can load this variable with:
+#
+# !pip install python-dotenv
+# import os
+# from dotenv import load_dotenv, find_dotenv
+# _ = load_dotenv(find_dotenv())
+# TIMESCALE_SERVICE_URL=os.environ["TIMESCALE_SERVICE_URL"]
+#
+# Note: You will need to install the python-dotenv (https://github.com/theskumar/python-dotenv)
+#
+# Then, you can connect to your Tiger Cloud instance using the service url in the
+# same places you would provide a PostgreSQL connection string (also referred to
+# as a postgres URL/URI/DSN). For instance:
+# Timescale-vector: client.Sync(service_url=os.environ["TIMESCALE_SERVICE_URL"])
+# psycopg2: psycopg2.connect(dsn=os.environ["TIMESCALE_SERVICE_URL"])
+# asyncpg: asyncpg.create_pool(dsn=os.environ["TIMESCALE_SERVICE_URL"])
+#
+# To connect to the database using psql please use:
+# psql "postgres://tsdbadmin:ixjewl5c1os4e1c5@ylyek10034.y6ziah8joj.tsdb.cloud.timescale.com:39632/tsdb?sslmode=require"
+#
+# We also define standard postgres environmental variables below. They can
+# be used with a variety of tools.
+PGPASSWORD=PGPASSWORD
+PGUSER=tutankamon
+PGDATABASE=manguacos
+PGHOST=miau2004.jakshgdj.tsdb.cloud.timescale.com
+PGPORT=676767
+PGSSLMODE=require
+
 VULTR_API_KEY=tu_clave_de_vultr_aqui
