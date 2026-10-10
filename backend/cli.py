@@ -1,9 +1,12 @@
 import argparse
 import sys
+import time
 from pathlib import Path
-from backend.app.db import run_migrations, check_db_health
+from backend.app.db import run_migrations, check_db_health, get_db_connection
 from backend.ingest.loader import load_from_directory_or_zip
 from backend.app.main import export_alertas_csv
+from backend.worker.loop import run_worker_cycle, process_tenant
+from backend.detector.engine import load_config
 
 def main():
     parser = argparse.ArgumentParser(description="CLI de Dino Alert")
@@ -46,11 +49,25 @@ def main():
         print(f"Alertas exportadas a: {args.output}")
 
     elif args.command == "process":
-        print("Worker/Detector listo para Etapa 2.")
+        config = load_config()
+        with get_db_connection() as conn:
+            if args.tenant:
+                if args.reset:
+                    with conn.cursor() as cur:
+                        cur.execute("DELETE FROM alertas WHERE tenant = %s;", (args.tenant,))
+                        cur.execute("DELETE FROM detector_estado WHERE tenant = %s;", (args.tenant,))
+                        conn.commit()
+                    print(f"Estado de {args.tenant} reiniciado.")
+                filas = process_tenant(conn, args.tenant, config)
+                print(f"Procesadas {filas} filas para {args.tenant}.")
+            else:
+                res = run_worker_cycle()
+                print(f"Ciclo completado: {res}")
 
     elif args.command == "run":
         run_migrations()
         load_from_directory_or_zip(args.input)
+        run_worker_cycle()
         resp = export_alertas_csv()
         Path(args.output).write_bytes(resp.body)
         print(f"Proceso concluido. Alertas guardadas en: {args.output}")

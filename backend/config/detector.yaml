@@ -1,0 +1,20 @@
+# Configuración del Detector Dino Alert
+warmup_horas: 6               # Calentamiento inicial en horas (sin línea base)
+historia_min_dias: 2          # Mínimo de días para usar mediana/MAD por hora del día
+ventana_reciente_h: 6         # Ventana fallback en horas si no hay suficientes días
+cooldown_min: 180             # Tiempo de enfriamiento tras cerrar o alertar
+umbral_vigilar: 0.50          # Confianza mínima para entrar a estado vigilando
+umbral_alerta: 0.70           # Confianza mínima para generar alerta
+reescalar_delta: 0.15         # Incremento mínimo de confianza para re-escalar alerta
+
+# Reglas Absolutas (Sección 5.5)
+abs_cpu_umbral: 92.0          # CPU > 92% sostenido
+abs_ram_umbral: 92.0          # RAM > 92% sostenido
+abs_disco_umbral: 92.0        # Disco > 92% sostenido
+abs_errores_umbral: 10.0      # Errores > 10 por minuto sostenidos
+abs_latencia_mult: 4.5        # Latencia > 4.5x mediana reciente
+
+# Pesos y parámetros de robustez
+mad_factor: 1.4826
+epsilon: 0.0001
+z_alto: 3.0
